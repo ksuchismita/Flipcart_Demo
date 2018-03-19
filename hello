@@ -1,0 +1,56 @@
+this is a java project
+------------------------
+package JavascriptTest;
+
+import org.eclipse.jdt.internal.compiler.ast.Argument;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+public class JavaScriptDemo {
+	/*launch browser
+	 * open the site
+	 * login the credential
+	 * display alert login 
+	 * */
+	@Test
+	public void launchbrowser(){
+		WebDriver driver = new FirefoxDriver();
+		
+		//creating javascriptexecutor interface object by typecasting
+		JavascriptExecutor js = (JavascriptExecutor)driver;
+		
+		//launch the site
+		driver.get("http://demo.guru99.com/V4/");
+		//maxmize browser
+				driver.manage().window().maximize();
+		
+		
+		//login to guru99
+		//driver.findElement(By.name("uid")).sendKeys("mngr104805");
+		//driver.findElement(By.name("password")).sendKeys("Ypemeta");
+		WebElement button = driver.findElement(By.name("btnLogin"));
+	
+		//javascript code for login username and password
+		js.executeScript("arguments[0].value=\"mngr104805\"", driver.findElement(By.xpath("html/body/form/table/tbody/tr[1]/td[2]/input")));
+		js.executeScript("arguments[0].value=\"Ypemeta\"", driver.findElement(By.xpath("html/body/form/table/tbody/tr[2]/td[2]/input")));
+		//perform click on login button using javascript
+		js.executeScript("arguments[0].click();", button);
+		
+		
+		
+		//display alert window using java script
+		String str = (String) js.executeScript("alert('Welcome to Guru99');");
+		System.out.println("print the alert msg--->"+str);
+		
+		
+		//scroll down the page
+		//js.executeScript("window.scrollBy(0,600)");
+		driver.close();
+	}
+
+}
+
