@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-
+//dropdown
 public class DropdownDemo {
 	public static void main(String args[]){
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Info_Oskc\\Downloads\\Compressed\\chromedriver.exe");
